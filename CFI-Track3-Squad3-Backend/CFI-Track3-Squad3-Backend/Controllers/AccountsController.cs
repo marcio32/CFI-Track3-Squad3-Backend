@@ -1,4 +1,5 @@
 ﻿using CFI_Track3_Squad3_Backend.DTOs;
+using CFI_Track3_Squad3_Backend.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,6 +9,13 @@ namespace CFI_Track3_Squad3_Backend.Controllers
     [ApiController]
     public class AccountsController : ControllerBase
     {
+        private readonly IUnitOfWork _unitOfWork;
+
+        public AccountsController(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+
         [Route("GetAllUsers")]
         [HttpGet]
         public ActionResult GetAll() 
