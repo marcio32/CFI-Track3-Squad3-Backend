@@ -1,3 +1,5 @@
+using CFI-Track3-Squad3-Backend.DataAccess;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +8,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.services.AddScoped<IEntitySeeder, AccountsSeeder>();
 
 var app = builder.Build();
 
