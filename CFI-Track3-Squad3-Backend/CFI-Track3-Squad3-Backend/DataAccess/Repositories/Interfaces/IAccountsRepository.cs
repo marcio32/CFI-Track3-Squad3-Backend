@@ -1,6 +1,5 @@
-﻿using CFI_Track3_Squad3_Backend.Repository;
-using CFI_Track3_Squad3_Backend.DTOs;
-using CFI_Track3_Squad3_Backend.Entities;
+﻿using CFI_Track3_Squad3_Backend.DTOs;
+using CFI_Track3_Squad3_Backend.Entites;
 
 namespace CFI_Track3_Squad3_Backend.DataAccess.Repositories.Interfaces
 {

@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CFI_Track3_Squad3_Backend.DataAccess.Repositories.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
-namespace CFI_Track3_Squad3_Backend.Repository
+namespace CFI_Track3_Squad3_Backend.DataAccess.Repositories
 {
     public class Repository<T> : IRepository<T> where T : class
     {
@@ -9,12 +10,12 @@ namespace CFI_Track3_Squad3_Backend.Repository
             throw new NotImplementedException();
         }
 
-        public async Task<bool> Insert(T id) 
+        public async Task<bool> Insert(T id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<bool> Delete(T id) 
+        public async Task<bool> Delete(T id)
         {
             throw new NotImplementedException();
         }
