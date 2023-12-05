@@ -5,7 +5,10 @@ using CFI_Track3_Squad3_Backend.Entites;
 namespace CFI_Track3_Squad3_Backend.DataAccess.Repositories
 {
     public class AccountsRepository : Repository<Accounts>, IAccountsRepository
-    {       
+    {   
+        public AccountsRepository(ContextDB contextDB) : base(contextDB) 
+        {
+        }
 
         public Task<List<AccountsDTO>> GetAllAccounts(int parameter, string state)
         {

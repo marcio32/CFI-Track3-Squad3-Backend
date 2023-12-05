@@ -1,4 +1,5 @@
 ﻿using CFI_Track3_Squad3_Backend.DTOs;
+using CFI_Track3_Squad3_Backend.Infrectuture;
 using CFI_Track3_Squad3_Backend.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,9 +19,9 @@ namespace CFI_Track3_Squad3_Backend.Controllers
 
         [Route("GetAllUsers")]
         [HttpGet]
-        public ActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            return Ok("Users");
+            return ResponseFactory.CreateSuccessResponse(200, await _unitOfWork.AccountsRepository.GetAll());
         }
 
         [HttpGet]
