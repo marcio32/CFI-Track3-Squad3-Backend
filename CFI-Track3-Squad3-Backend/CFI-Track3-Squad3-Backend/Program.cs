@@ -1,4 +1,10 @@
+
+using CFI_Track3_Squad3_Backend.DTOs;
+using CFI_Track3_Squad3_Backend.Services;
+using Microsoft.EntityFrameworkCore;
+
 using CFI-Track3-Squad3-Backend.DataAccess;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,7 +14,16 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddDbContext<ContextDB>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWorkService>();
+
 builder.services.AddScoped<IEntitySeeder, AccountsSeeder>();
+
 
 var app = builder.Build();
 
@@ -26,3 +41,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
