@@ -19,8 +19,10 @@ namespace CFI_Track3_Squad3_Backend.Entites
         public string? Email { get; set; }
         [Column("Points", TypeName = "NUMBER")]
         public int Points { get; set; }
-        [Key]
+        [Required]
         [Column("RolId")]
+        [ForeignKey]
         public int RolId { get; set; }
+        public Role? Role { get; set; }
     }
 }
