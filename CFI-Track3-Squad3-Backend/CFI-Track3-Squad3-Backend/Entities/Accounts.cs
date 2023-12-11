@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CFI_Track3_Squad3_Backend.Entites
+namespace CFI_Track3_Squad3_Backend.Entities
 {
     [Table("Accounts")]
     public class Accounts
@@ -20,21 +20,15 @@ namespace CFI_Track3_Squad3_Backend.Entites
         [Column("account_UserId")]
         public int UserId { get; set; }
 
-        //descomentar cuando se agrege AccountDTO.
-
-        //public static implicit operator Accounts(UserAccountDTO dto) 
-        //{
-        //    var account = new Accounts();
-        //    account.Id = dto.Id;
-        //    account.DateTime = dto.DateTime;
-        //    account.Money = dto.Money;
-        //    account.IsBlocked = dto.IsBlocked;
-        //    return account;
-        //}
-
-
-
-
+        public static implicit operator Accounts(AccountsDTO accountsDTO)
+        {
+            var accounts = new Accounts();
+            accountsDTO.UserId = accountsDTO.UserId;
+            accountsDTO.DataTime = accountsDTO.DataTime;
+            accountsDTO.Id = accountsDTO.Id;
+            accountsDTO.Money = accountsDTO.Money;
+            accountsDTO.IsBlocked = accountsDTO.IsBlocked;
+            return accounts;
+        }
     }
-
 }

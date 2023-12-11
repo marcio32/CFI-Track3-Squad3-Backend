@@ -17,39 +17,63 @@ namespace CFI_Track3_Squad3_Backend.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        [Route("GetAllUsers")]
+        [Route("GetAllAccounts")]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return ResponseFactory.CreateSuccessResponse(200, await _unitOfWork.AccountsRepository.GetAll());
+            return ResponseFactory.CreateSuccessResponse(200, await _unitOfWork.AccountsRepository.GetAllAccount());
         }
 
         [HttpGet]
-        [Route("/api/producto/{id}")]
-        public ActionResult GetById(int id)
+        [Route("GetAccountId/{id}")]
+        public async Task<IActionResult> GetById(int id)
         {
-            return Ok(id + "User");
+            var result = await _unitOfWork.AccountsRepository.GetAccountId(id);
+            if (result != null)
+            {
+                await _unitOfWork.Complete();
+                return ResponseFactory.CreateSuccessResponse(200, await _unitOfWork.AccountsRepository.GetAccountId(id));
+            }
+            return ResponseFactory.CreateErrorResponse(404, "Cuenta no encontrada.");
         }
-
-        [Route("AddUser")]
+        
         [HttpPost]
-        public ActionResult AddUser(UserLoginDTO userLoginDTO)
+        [Route("InsertAccount")]
+        public async Task<IActionResult> Insert(int id, AccountsDTO accountsDTO)
         {
-            return Ok(userLoginDTO);
+            var result = await _unitOfWork.AccountsRepository.InsertAccount(accountsDTO);
+            if (result)
+            {
+                await _unitOfWork.Complete();
+                return ResponseFactory.CreateSuccessResponse(200, "Cuenta ingresada correctamente.");
+            }
+            return ResponseFactory.CreateErrorResponse(400, "Error al ingresar cuenta.");
         }
 
-        [Route("UpdataUser")]
         [HttpPut]
-        public ActionResult UpdataUser(UserLoginDTO userLoginDTO)
+        [Route("UpdataAccount")]
+        public async Task<IActionResult> Updata(int id, AccountsDTO accountsDTO) 
         {
-            return Ok(userLoginDTO);
+            var result = await _unitOfWork.AccountsRepository.UpdataAccount(accountsDTO, id);
+            if (result)
+            {
+                await _unitOfWork.Complete();
+                return ResponseFactory.CreateSuccessResponse(200, "Cuenta actualizada correctamente.");
+            }
+            return ResponseFactory.CreateErrorResponse(400, "Error al acualizar cuenta.");
         }
 
-        [Route("DeleteUser")]
         [HttpDelete]
-        public ActionResult DeleteUser(int id)
+        [Route("DeleteAccount")]
+        public async Task<IActionResult> Delete(int id)
         {
-            return Ok("User Delete");
+            var result = await _unitOfWork.AccountsRepository.DeleteAccount(id);
+            if (result) 
+            {
+                await _unitOfWork.Complete();
+                return ResponseFactory.CreateSuccessResponse(200, "Cuenta eliminada correctamente.");
+            }
+            return ResponseFactory.CreateErrorResponse(400, "Error al eliminar cuenta");
         }
-    }
+    }    
 }

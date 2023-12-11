@@ -25,7 +25,7 @@ namespace CFI_Track3_Squad3_Backend.DataAccess.Repositories
         /// Obtiene todas las entidades del tipo T.
         /// </summary>
         /// <returns>Una lista de todas las entidades.</returns>
-        public async Task<List<T>> GetAll()
+        public async Task<List<T>?> GetAll()
         {
             try
             {
@@ -35,7 +35,7 @@ namespace CFI_Track3_Squad3_Backend.DataAccess.Repositories
             catch (Exception ex)
             {
 
-                throw;
+                return null;
             }
         }
 
