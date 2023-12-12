@@ -2,8 +2,8 @@
 using CFI_Track3_Squad3_Backend.DTOs;
 using CFI_Track3_Squad3_Backend.Services;
 using Microsoft.EntityFrameworkCore;
-
-using CFI-Track3-Squad3-Backend.DataAccess;
+using CFI_Track3_Squad3_Backend.DataAccess.DatabaseSeeding;
+using System.Security.Claims;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,9 +20,23 @@ builder.Services.AddDbContext<ContextDB>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+builder.Services.AddAuthorization(option =>
+{
+    option.AddPolicy("Administrator", policy => policy.RequireClaim(ClaimTypes.Role, "1"));
+
+    option.AddPolicy("Consultant", policy => policy.RequireClaim(ClaimTypes.Role, "2"));
+
+
+    option.AddPolicy("AdministratorAndConsultant", policy =>
+    {
+        policy.RequireClaim(ClaimTypes.Role, "1", "2");
+    });
+
+});
+
 builder.Services.AddScoped<IUnitOfWork, UnitOfWorkService>();
 
-builder.services.AddScoped<IEntitySeeder, AccountsSeeder>();
+builder.Services.AddScoped<IEntitySeeder, AccountsSeeder>();
 
 
 var app = builder.Build();

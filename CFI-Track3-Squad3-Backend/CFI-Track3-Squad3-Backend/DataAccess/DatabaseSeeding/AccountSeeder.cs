@@ -1,14 +1,14 @@
 using Microsoft.EntityFrameworkCore;
-using CFI-Track3-Squad3-Backend.Entities;
+using CFI_Track3_Squad3_Backend.Entities;
 
-namespace CFI-Track3-Squad3-Backend.DataAccess.DatabaseSeeding
+namespace CFI_Track3_Squad3_Backend.DataAccess.DatabaseSeeding
 {
-    public class UserSeeder : IEntitySeeder
+    public class AccountsSeeder : IEntitySeeder 
     {
         public void SeedDatabase(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Account>().HasData(
-                new Account
+            modelBuilder.Entity<AccountsSeeder>().HasData(
+                new Accounts
                 {
                     Id = 1,
                     DateTime = DateTime.Now,
@@ -16,7 +16,7 @@ namespace CFI-Track3-Squad3-Backend.DataAccess.DatabaseSeeding
                     IsBlocked = false,
                     UserId = 1
                 },
-                new Account
+                new Accounts
                 {
                     Id = 2,
                     DateTime = DateTime.Now,
@@ -24,22 +24,24 @@ namespace CFI-Track3-Squad3-Backend.DataAccess.DatabaseSeeding
                     IsBlocked = false,
                     UserId = 1
                 },
-                   new Account
-                   {
-                       Id = 3,
-                       DateTime = DateTime.Now,
-                       Money = 1500.50m,
-                       IsBlocked = true,
-                       UserId = 2
-                   },
-                new Account
+                new Accounts
+                {
+                    Id = 3,
+                    DateTime = DateTime.Now,
+                    Money = 1500.50m,
+                    IsBlocked = true,
+                    UserId = 2
+                },
+                new Accounts
                 {
                     Id = 4,
                     DateTime = DateTime.Now,
                     Money = 3000.75m,
                     IsBlocked = false,
                     UserId = 2
-                },);
+                });
         }
-    }
+    }    
 }
+    
+    

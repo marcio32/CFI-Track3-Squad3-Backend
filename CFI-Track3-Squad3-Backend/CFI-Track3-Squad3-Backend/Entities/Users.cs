@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CFI_Track3_Squad3_Backend.Entites
+namespace CFI_Track3_Squad3_Backend.Entities
 {
     [Table("Users")]
     public class Users
