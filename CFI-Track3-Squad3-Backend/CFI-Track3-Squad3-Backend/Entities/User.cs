@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace CFI_Track3_Squad3_Backend.Entities
 {
     [Table("Users")]
-    public class Users
+    public class User
     {
         [Column("Id")]
         public int Id { get; set; }
@@ -20,7 +20,7 @@ namespace CFI_Track3_Squad3_Backend.Entities
         [Column("Points", TypeName = "NUMBER")]
         public int Points { get; set; }
         [Key]
-        [Column("RolId")]
-        public int RolId { get; set; }
+        [Column("RoleId")]
+        public int RoleId { get; set; }
     }
 }

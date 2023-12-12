@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace CFI_Track3_Squad3_Backend.Entities
 {
     [Table("Accounts")]
-    public class Accounts
+    public class Account
     {
         [Column("Account_Id")]
         public int Id { get; set; }
@@ -20,9 +20,9 @@ namespace CFI_Track3_Squad3_Backend.Entities
         [Column("account_UserId")]
         public int UserId { get; set; }
 
-        public static implicit operator Accounts(AccountsDTO accountsDTO)
+        public static implicit operator Account(AccountsDTO accountsDTO)
         {
-            var accounts = new Accounts();
+            var accounts = new Account();
             accountsDTO.UserId = accountsDTO.UserId;
             accountsDTO.DataTime = accountsDTO.DataTime;
             accountsDTO.Id = accountsDTO.Id;

@@ -5,14 +5,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CFI_Track3_Squad3_Backend.DataAccess.Repositories
 {
-    public class AccountsRepository : Repository<Accounts>
+    public class AccountsRepository : Repository<Account>
     {
         protected readonly ContextDB _contextDB;
         public AccountsRepository(ContextDB contextDB) : base(contextDB) 
         {
         }
         
-        public async Task<List<Accounts>> GetAllAccount()
+        public async Task<List<Account>> GetAllAccount()
         {
             try
             {
@@ -26,7 +26,7 @@ namespace CFI_Track3_Squad3_Backend.DataAccess.Repositories
             }
         }
 
-        public async Task<Accounts?> GetAccountId(int id)
+        public async Task<Account?> GetAccountId(int id)
         {
             try
             {
@@ -43,7 +43,7 @@ namespace CFI_Track3_Squad3_Backend.DataAccess.Repositories
         {
             try
             {
-                var account = new Accounts();
+                var account = new Account();
                 account = accountsDTO;
                 return await base.Insert(account);
             }
@@ -58,7 +58,7 @@ namespace CFI_Track3_Squad3_Backend.DataAccess.Repositories
         {
             try
             {
-                var account = new Accounts();
+                var account = new Account();
                 account = accountsDTO;
                 account.Id = id;
                 account.IsBlocked = accountsDTO.IsBlocked;

@@ -8,7 +8,7 @@ namespace CFI_Track3_Squad3_Backend.DataAccess.DatabaseSeeding
         public void SeedDatabase(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<AccountsSeeder>().HasData(
-                new Accounts
+                new Account
                 {
                     Id = 1,
                     DateTime = DateTime.Now,
@@ -16,7 +16,7 @@ namespace CFI_Track3_Squad3_Backend.DataAccess.DatabaseSeeding
                     IsBlocked = false,
                     UserId = 1
                 },
-                new Accounts
+                new Account
                 {
                     Id = 2,
                     DateTime = DateTime.Now,
@@ -24,7 +24,7 @@ namespace CFI_Track3_Squad3_Backend.DataAccess.DatabaseSeeding
                     IsBlocked = false,
                     UserId = 1
                 },
-                new Accounts
+                new Account
                 {
                     Id = 3,
                     DateTime = DateTime.Now,
@@ -32,7 +32,7 @@ namespace CFI_Track3_Squad3_Backend.DataAccess.DatabaseSeeding
                     IsBlocked = true,
                     UserId = 2
                 },
-                new Accounts
+                new Account
                 {
                     Id = 4,
                     DateTime = DateTime.Now,
