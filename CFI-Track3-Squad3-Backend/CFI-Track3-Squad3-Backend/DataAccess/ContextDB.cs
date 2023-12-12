@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CFI_Track3_Squad3_Backend.DataAccess.DatabaseSeeding;
+using CFI_Track3_Squad3_Backend.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace CFI_Track3_Squad3_Backend.DTOs
 {
@@ -8,8 +10,23 @@ namespace CFI_Track3_Squad3_Backend.DTOs
         {
         }
 
+        public DbSet<Accounts> Accounts { get; set; }
+        public DbSet<Role> Roles { get; set; }        
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            var seeders = new List<IEntitySeeder>
+            {
+                new RoleSeeder(),
+                new AccountsSeeder(),               
+            };
+
+            foreach (var seeder in seeders)
+            {
+
+                seeder.SeedDatabase(modelBuilder);
+            }
+
             base.OnModelCreating(modelBuilder);
         }
     }
