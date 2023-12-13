@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using CFI_Track3_Squad3_Backend.Entities;
+using CFI_Track3_Squad3_Backend.DTOs;
 
 namespace CFI_Track3_Squad3_Backend.DataAccess.DatabaseSeeding
 {
@@ -7,7 +8,7 @@ namespace CFI_Track3_Squad3_Backend.DataAccess.DatabaseSeeding
     {
         public void SeedDatabase(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<AccountsSeeder>().HasData(
+            modelBuilder.Entity<AccountsDTO>().HasData(
                 new Accounts
                 {
                     Id = 1,

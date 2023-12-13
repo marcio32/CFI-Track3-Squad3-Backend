@@ -34,6 +34,9 @@ builder.Services.AddAuthorization(option =>
 
 });
 
+
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
+
 builder.Services.AddScoped<IUnitOfWork, UnitOfWorkService>();
 
 builder.Services.AddScoped<IEntitySeeder, AccountsSeeder>();
