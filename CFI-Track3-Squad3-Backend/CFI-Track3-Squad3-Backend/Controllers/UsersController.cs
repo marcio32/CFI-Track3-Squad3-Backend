@@ -12,7 +12,7 @@ namespace CFI_Track3_Squad3_Backend.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly ILogger<UsersController> _logger;
-
+       
         public UsersController(IUnitOfWork unitOfWork, ILogger<UsersController> logger)
         {
             _unitOfWork = unitOfWork;
@@ -28,7 +28,7 @@ namespace CFI_Track3_Squad3_Backend.Controllers
         //devoluciones:
         //-devuelve el listado de usuarios con el codigo 200
         //-devuelve un mensaje de error con el codigo 500, error de servidor
-        
+
 
         [HttpGet]
         [Authorize(Policy = "AdministratorAndConsultant")]
@@ -42,7 +42,7 @@ namespace CFI_Track3_Squad3_Backend.Controllers
                 var url = new Uri($"{Request.Scheme}://{Request.Host}{Request.Path}").ToString();
                 var paginateUsers = PaginateHelper.Paginate(usersDTO, pageToShow, url, pageSize);
                 return ResponseFactory.CreateSuccessResponse(200, paginateUsers);
-            }
+        }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "A ocurrido un error inesperado");
@@ -76,7 +76,7 @@ namespace CFI_Track3_Squad3_Backend.Controllers
                 {
                     return ResponseFactory.CreateSuccessResponse(200, userDTO);
                 }
-                else
+                else 
                 {
                     _logger.LogError("El usuario no fue encontrado");
                     return ResponseFactory.CreateErrorResponse(404, "El usuario no fue encontrado");
@@ -88,7 +88,8 @@ namespace CFI_Track3_Squad3_Backend.Controllers
                 return ResponseFactory.CreateErrorResponse(500, "A ocurrido un error inesperado");
             }
 
-        }
+                return ResponseFactory.CreateErrorResponse(500, "Ocurrió un error inesperado.");
+            }
         //registro de usuario en la base de datos metodo HTTP POST
         //////parametros:
         //////-"userRegisterDTO": se utiliza el modelo para completar la informacion del usuario
@@ -99,7 +100,7 @@ namespace CFI_Track3_Squad3_Backend.Controllers
 
         [HttpPost]
         [Authorize(Policy = "Administrator")]
-        public async Task<IActionResult> Register(UserRegisterDTO userRegisterDTO)
+        public async Task<IActionResult> Register(UserRegisterDTO userRegisterDTO) 
         {
             try
             {
@@ -139,7 +140,7 @@ namespace CFI_Track3_Squad3_Backend.Controllers
             {
                 var result = await _unitOfWork.UserRepository.UpdateUser(userRegisterDTO, id, parameter);
 
-                if (result != false)
+                if (result != false) 
                 {
                     await _unitOfWork.Complete();
                     return ResponseFactory.CreateSuccessResponse(200, "La actualizacion fue exitosa");
@@ -154,7 +155,9 @@ namespace CFI_Track3_Squad3_Backend.Controllers
                 return ResponseFactory.CreateErrorResponse(500, "A ocurrido un error inesperado");
             }
 
-        }
+                return ResponseFactory.CreateErrorResponse(500, "Ocurrió un error inesperado.");
+            }
+        }    
         eliminar un usuario de forma temporal o permanente por ID metodo HTTP DELETE
         ////parametros:
         ////-id: se utiliza para obtener el usuarios mediante esa identidad

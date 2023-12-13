@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using CFI_Track3_Squad3_Backend.Entities;
+using CFI_Track3_Squad3_Backend.DTOs;
 
 namespace CFI_Track3_Squad3_Backend.DataAccess.DatabaseSeeding
 {

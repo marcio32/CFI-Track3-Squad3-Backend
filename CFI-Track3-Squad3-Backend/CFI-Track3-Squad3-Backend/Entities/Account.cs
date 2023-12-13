@@ -8,6 +8,7 @@ namespace CFI_Track3_Squad3_Backend.Entities
     [Table("Accounts")]
     public class Account
     {
+        [Key]
         [Column("Account_Id")]
         public int Id { get; set; }
         [Column("account_CreationDate", TypeName = "DATETIME")]
@@ -16,7 +17,7 @@ namespace CFI_Track3_Squad3_Backend.Entities
         public decimal Money { get; set; }
         [Column("account_IsBlocked")]
         public bool IsBlocked { get; set; }
-        [Key]
+        
         [Column("account_UserId")]
         public int UserId { get; set; }
 

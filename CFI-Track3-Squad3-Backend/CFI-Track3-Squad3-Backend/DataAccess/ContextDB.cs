@@ -10,8 +10,9 @@ namespace CFI_Track3_Squad3_Backend.DTOs
         {
         }
 
-        public DbSet<Account> Accounts { get; set; }
-        public DbSet<Role> Roles { get; set; }        
+        public DbSet<Accounts> Accounts { get; set; }
+        public DbSet<Role> Roles { get; set; } 
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
