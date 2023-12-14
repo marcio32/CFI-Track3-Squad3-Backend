@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CFI_Track3_Squad3_Backend.Migrations
 {
-    public partial class ModelDB : Migration
+    public partial class TestDBV12 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,7 +15,7 @@ namespace CFI_Track3_Squad3_Backend.Migrations
                 {
                     Account_Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    account_CreationDate = table.Column<DateTime>(type: "DATETIME", nullable: false),
+                    account_CreationDate = table.Column<string>(type: "VARCHAR(100)", nullable: true),
                     account_Money = table.Column<decimal>(type: "DECIMAL", nullable: false),
                     account_IsBlocked = table.Column<bool>(type: "bit", nullable: false),
                     account_UserId = table.Column<int>(type: "int", nullable: false)
@@ -45,26 +45,25 @@ namespace CFI_Track3_Squad3_Backend.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    RolId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Id = table.Column<int>(type: "int", nullable: false),
                     FirstName = table.Column<string>(type: "VARCHAR(100)", nullable: true),
                     LastName = table.Column<string>(type: "VARCHAR(100)", nullable: true),
                     Password = table.Column<string>(type: "VARCHAR(100)", nullable: true),
                     Email = table.Column<string>(type: "VARCHAR(100)", nullable: true),
-                    Points = table.Column<int>(type: "NUMBER", nullable: false),
                     IsDelete = table.Column<bool>(type: "bit", nullable: false),
                     DeletedTimeUtc = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    RoleId = table.Column<int>(type: "int", nullable: true)
+                    RolId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Users", x => x.RolId);
+                    table.PrimaryKey("PK_Users", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Users_roles_RoleId",
-                        column: x => x.RoleId,
+                        name: "FK_Users_roles_RolId",
+                        column: x => x.RolId,
                         principalTable: "roles",
-                        principalColumn: "role_id");
+                        principalColumn: "role_id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -72,10 +71,10 @@ namespace CFI_Track3_Squad3_Backend.Migrations
                 columns: new[] { "Account_Id", "account_CreationDate", "account_IsBlocked", "account_Money", "account_UserId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 12, 14, 10, 16, 17, 105, DateTimeKind.Local).AddTicks(2131), false, 1000.00m, 1 },
-                    { 2, new DateTime(2023, 12, 14, 10, 16, 17, 105, DateTimeKind.Local).AddTicks(2151), false, 2000.00m, 1 },
-                    { 3, new DateTime(2023, 12, 14, 10, 16, 17, 105, DateTimeKind.Local).AddTicks(2153), true, 1500.50m, 2 },
-                    { 4, new DateTime(2023, 12, 14, 10, 16, 17, 105, DateTimeKind.Local).AddTicks(2155), false, 3000.75m, 2 }
+                    { 1, "2023-12-14T19:22:44.2373951", false, 1000.00m, 1 },
+                    { 2, "2023-12-14T19:22:44.2373951", false, 2000.00m, 1 },
+                    { 3, "2023-12-14T19:22:44.2373951", true, 1500.50m, 2 },
+                    { 4, "2023-12-14T19:22:44.2373951", false, 3000.75m, 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -87,10 +86,20 @@ namespace CFI_Track3_Squad3_Backend.Migrations
                     { 2, null, "Consultant", false, "Consultant" }
                 });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Users_RoleId",
+            migrationBuilder.InsertData(
                 table: "Users",
-                column: "RoleId");
+                columns: new[] { "Id", "DeletedTimeUtc", "Email", "FirstName", "IsDelete", "LastName", "Password", "RolId" },
+                values: new object[] { 1, null, "adm@gmail.com", "Pablo", false, "Ortiz", "9f3d321cd0a1ccafa899226d5190f74618cb23b789aa998e1d7f741956132434", 1 });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "DeletedTimeUtc", "Email", "FirstName", "IsDelete", "LastName", "Password", "RolId" },
+                values: new object[] { 2, null, "noadm@gmail.com", "Kevin", false, "Johnson", "a10ad3a74bccd29b56cb5ec5a213d1a27b293b6bb88797418a31f09c2a707bf4", 2 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_RolId",
+                table: "Users",
+                column: "RolId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

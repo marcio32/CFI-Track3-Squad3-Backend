@@ -29,7 +29,7 @@ namespace CFI_Track3_Squad3_Backend.Entities
         [Column("DeletedTimeUtc")]
         public DateTime? DeletedTimeUtc { get; set; }
 
-        [Key]
+        
         [Column("RolId")]
         public int RoleId { get; set; }
         public Role? Role { get; set; }

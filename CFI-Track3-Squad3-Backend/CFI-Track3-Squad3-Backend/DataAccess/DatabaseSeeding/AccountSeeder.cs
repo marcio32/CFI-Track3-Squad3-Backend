@@ -12,7 +12,7 @@ namespace CFI_Track3_Squad3_Backend.DataAccess.DatabaseSeeding
                 new Account
                 {
                     Id = 1,
-                    DateTime = DateTime.Now,
+                    DateTime = "2023-12-14T19:22:44.2373951",
                     Money = 1000.00m,
                     IsBlocked = false,
                     UserId = 1
@@ -20,7 +20,7 @@ namespace CFI_Track3_Squad3_Backend.DataAccess.DatabaseSeeding
                 new Account
                 {
                     Id = 2,
-                    DateTime = DateTime.Now,
+                    DateTime = "2023-12-14T19:22:44.2373951",
                     Money = 2000.00m,
                     IsBlocked = false,
                     UserId = 1
@@ -28,7 +28,7 @@ namespace CFI_Track3_Squad3_Backend.DataAccess.DatabaseSeeding
                 new Account
                 {
                     Id = 3,
-                    DateTime = DateTime.Now,
+                    DateTime = "2023-12-14T19:22:44.2373951",
                     Money = 1500.50m,
                     IsBlocked = true,
                     UserId = 2
@@ -36,7 +36,7 @@ namespace CFI_Track3_Squad3_Backend.DataAccess.DatabaseSeeding
                 new Account
                 {
                     Id = 4,
-                    DateTime = DateTime.Now,
+                    DateTime = "2023-12-14T19:22:44.2373951",
                     Money = 3000.75m,
                     IsBlocked = false,
                     UserId = 2

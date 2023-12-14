@@ -31,8 +31,8 @@ namespace CFI_Track3_Squad3_Backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("DATETIME")
+                    b.Property<string>("DateTime")
+                        .HasColumnType("VARCHAR(100)")
                         .HasColumnName("account_CreationDate");
 
                     b.Property<bool>("IsBlocked")
@@ -55,7 +55,7 @@ namespace CFI_Track3_Squad3_Backend.Migrations
                         new
                         {
                             Id = 1,
-                            DateTime = new DateTime(2023, 12, 14, 10, 16, 17, 105, DateTimeKind.Local).AddTicks(2131),
+                            DateTime = "2023-12-14T19:22:44.2373951",
                             IsBlocked = false,
                             Money = 1000.00m,
                             UserId = 1
@@ -63,7 +63,7 @@ namespace CFI_Track3_Squad3_Backend.Migrations
                         new
                         {
                             Id = 2,
-                            DateTime = new DateTime(2023, 12, 14, 10, 16, 17, 105, DateTimeKind.Local).AddTicks(2151),
+                            DateTime = "2023-12-14T19:22:44.2373951",
                             IsBlocked = false,
                             Money = 2000.00m,
                             UserId = 1
@@ -71,7 +71,7 @@ namespace CFI_Track3_Squad3_Backend.Migrations
                         new
                         {
                             Id = 3,
-                            DateTime = new DateTime(2023, 12, 14, 10, 16, 17, 105, DateTimeKind.Local).AddTicks(2153),
+                            DateTime = "2023-12-14T19:22:44.2373951",
                             IsBlocked = true,
                             Money = 1500.50m,
                             UserId = 2
@@ -79,7 +79,7 @@ namespace CFI_Track3_Squad3_Backend.Migrations
                         new
                         {
                             Id = 4,
-                            DateTime = new DateTime(2023, 12, 14, 10, 16, 17, 105, DateTimeKind.Local).AddTicks(2155),
+                            DateTime = "2023-12-14T19:22:44.2373951",
                             IsBlocked = false,
                             Money = 3000.75m,
                             UserId = 2
@@ -136,12 +136,12 @@ namespace CFI_Track3_Squad3_Backend.Migrations
 
             modelBuilder.Entity("CFI_Track3_Squad3_Backend.Entities.User", b =>
                 {
-                    b.Property<int>("RolId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("RolId");
+                        .HasColumnName("Id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RolId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<DateTime?>("DeletedTimeUtc")
                         .HasColumnType("datetime2")
@@ -155,10 +155,6 @@ namespace CFI_Track3_Squad3_Backend.Migrations
                         .HasColumnType("VARCHAR(100)")
                         .HasColumnName("FirstName");
 
-                    b.Property<int>("Id")
-                        .HasColumnType("int")
-                        .HasColumnName("Id");
-
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit")
                         .HasColumnName("IsDelete");
@@ -171,25 +167,46 @@ namespace CFI_Track3_Squad3_Backend.Migrations
                         .HasColumnType("VARCHAR(100)")
                         .HasColumnName("Password");
 
-                    b.Property<int>("Points")
-                        .HasColumnType("NUMBER")
-                        .HasColumnName("Points");
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int")
+                        .HasColumnName("RolId");
 
-                    b.Property<int?>("RoleId")
-                        .HasColumnType("int");
-
-                    b.HasKey("RolId");
+                    b.HasKey("Id");
 
                     b.HasIndex("RoleId");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "adm@gmail.com",
+                            FirstName = "Pablo",
+                            IsDelete = false,
+                            LastName = "Ortiz",
+                            Password = "9f3d321cd0a1ccafa899226d5190f74618cb23b789aa998e1d7f741956132434",
+                            RoleId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "noadm@gmail.com",
+                            FirstName = "Kevin",
+                            IsDelete = false,
+                            LastName = "Johnson",
+                            Password = "a10ad3a74bccd29b56cb5ec5a213d1a27b293b6bb88797418a31f09c2a707bf4",
+                            RoleId = 2
+                        });
                 });
 
             modelBuilder.Entity("CFI_Track3_Squad3_Backend.Entities.User", b =>
                 {
                     b.HasOne("CFI_Track3_Squad3_Backend.Entities.Role", "Role")
                         .WithMany()
-                        .HasForeignKey("RoleId");
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Role");
                 });
