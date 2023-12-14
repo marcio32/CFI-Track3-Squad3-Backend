@@ -10,7 +10,7 @@ namespace CFI_Track3_Squad3_Backend.DTOs
         {
         }
 
-        public DbSet<Accounts> Accounts { get; set; }
+        public DbSet<Account> Accounts { get; set; }
         public DbSet<Role> Roles { get; set; } 
         public DbSet<User> Users { get; set; }
 
@@ -19,7 +19,8 @@ namespace CFI_Track3_Squad3_Backend.DTOs
             var seeders = new List<IEntitySeeder>
             {
                 new RoleSeeder(),
-                new AccountsSeeder(),               
+                new AccountsSeeder(),
+                new UserSeeder()                
             };
 
             foreach (var seeder in seeders)

@@ -8,7 +8,7 @@ namespace CFI_Track3_Squad3_Backend.DataAccess.DatabaseSeeding
     {
         public void SeedDatabase(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<AccountsSeeder>().HasData(
+            modelBuilder.Entity<Account>().HasData(
                 new Account
                 {
                     Id = 1,

@@ -21,10 +21,7 @@ namespace CFI_Track3_Squad3_Backend.Entities
         public string? Password { get; set; }
 
         [Column("Email", TypeName = "VARCHAR(100)")]
-        public string? Email { get; set; }
-
-        [Column("Points", TypeName = "NUMBER")]
-        public int Points { get; set; }
+        public string? Email { get; set; }       
 
         [Column("IsDelete")]
         public bool IsDelete { get; set; }
@@ -34,7 +31,7 @@ namespace CFI_Track3_Squad3_Backend.Entities
 
         [Key]
         [Column("RolId")]
-        public int RolId { get; set; }
+        public int RoleId { get; set; }
         public Role? Role { get; set; }
     }
 }

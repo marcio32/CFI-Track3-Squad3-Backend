@@ -5,6 +5,9 @@ using Microsoft.EntityFrameworkCore;
 using CFI_Track3_Squad3_Backend.DataAccess.DatabaseSeeding;
 using System.Security.Claims;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -34,7 +37,7 @@ builder.Services.AddSwaggerGen(c =>
                 Id = "Bearer"
             }
             }, new string []{}
-         }
+        }
 
     });
 });
@@ -63,7 +66,14 @@ builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWorkService>();
 
-builder.Services.AddScoped<IEntitySeeder, AccountsSeeder>();
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+           .AddJwtBearer(options => options.TokenValidationParameters = new TokenValidationParameters()
+           {
+               ValidateIssuerSigningKey = true,
+               IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
+               ValidateIssuer = false,
+               ValidateAudience = false
+           }); ;
 
 
 var app = builder.Build();

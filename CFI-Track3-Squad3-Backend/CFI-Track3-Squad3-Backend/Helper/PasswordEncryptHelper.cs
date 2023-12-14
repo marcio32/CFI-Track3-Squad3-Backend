@@ -25,7 +25,7 @@ namespace CFI_Track3_Squad3_Backend.Helper
         {
             var salt = email;
             byte[] saltBytes;
-            string saltStr,
+            string saltStr;
             saltBytes = ASCIIEncoding.ASCII.GetBytes(salt);
             long XORED = 0x00;
 

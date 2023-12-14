@@ -10,6 +10,7 @@ namespace CFI_Track3_Squad3_Backend.DataAccess.Repositories
         protected readonly ContextDB _contextDB;
         public AccountsRepository(ContextDB contextDB) : base(contextDB) 
         {
+            _contextDB = contextDB;
         }
         
         public async Task<List<Account>> GetAllAccount()

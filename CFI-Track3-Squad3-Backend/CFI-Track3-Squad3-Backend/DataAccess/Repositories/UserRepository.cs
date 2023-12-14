@@ -2,6 +2,7 @@
 using CFI_Track3_Squad3_Backend.DataAccess.Repositories.Interfaces;
 using CFI_Track3_Squad3_Backend.DTOs;
 using CFI_Track3_Squad3_Backend.Entities;
+using CFI_Track3_Squad3_Backend.Helper;
 using CFI_Track3_Squad3_Backend.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -132,6 +133,19 @@ namespace CFI_Track3_Squad3_Backend.DataAccess.Repositories
             }
         }
         
+        public async Task<User?> AuthenticateCredentials(AuthenticateDTO authenticateDTO) 
+        {
+            try
+            {
+                return await _contextDB.Users.Include(user => user.Role).SingleOrDefaultAsync
+                    (user => user.Email == authenticateDTO.Email && user.Password == PasswordEncryptHelper.EncryptPassword(authenticateDTO.Password, authenticateDTO.Email));
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+        }
 
     }
 }
