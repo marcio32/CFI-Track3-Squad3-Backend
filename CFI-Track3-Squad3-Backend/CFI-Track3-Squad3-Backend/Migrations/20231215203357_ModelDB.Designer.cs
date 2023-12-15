@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CFI_Track3_Squad3_Backend.Migrations
 {
     [DbContext(typeof(ContextDB))]
-    [Migration("20231214225653_TestDBV12")]
-    partial class TestDBV12
+    [Migration("20231215203357_ModelDB")]
+    partial class ModelDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,8 +33,8 @@ namespace CFI_Track3_Squad3_Backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("DateTime")
-                        .HasColumnType("VARCHAR(100)")
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("datetime2")
                         .HasColumnName("account_CreationDate");
 
                     b.Property<bool>("IsBlocked")
@@ -57,7 +57,7 @@ namespace CFI_Track3_Squad3_Backend.Migrations
                         new
                         {
                             Id = 1,
-                            DateTime = "2023-12-14T19:22:44.2373951",
+                            DateTime = new DateTime(2023, 12, 15, 17, 33, 56, 802, DateTimeKind.Local).AddTicks(8040),
                             IsBlocked = false,
                             Money = 1000.00m,
                             UserId = 1
@@ -65,7 +65,7 @@ namespace CFI_Track3_Squad3_Backend.Migrations
                         new
                         {
                             Id = 2,
-                            DateTime = "2023-12-14T19:22:44.2373951",
+                            DateTime = new DateTime(2023, 12, 15, 17, 33, 56, 802, DateTimeKind.Local).AddTicks(8054),
                             IsBlocked = false,
                             Money = 2000.00m,
                             UserId = 1
@@ -73,7 +73,7 @@ namespace CFI_Track3_Squad3_Backend.Migrations
                         new
                         {
                             Id = 3,
-                            DateTime = "2023-12-14T19:22:44.2373951",
+                            DateTime = new DateTime(2023, 12, 15, 17, 33, 56, 802, DateTimeKind.Local).AddTicks(8055),
                             IsBlocked = true,
                             Money = 1500.50m,
                             UserId = 2
@@ -81,7 +81,7 @@ namespace CFI_Track3_Squad3_Backend.Migrations
                         new
                         {
                             Id = 4,
-                            DateTime = "2023-12-14T19:22:44.2373951",
+                            DateTime = new DateTime(2023, 12, 15, 17, 33, 56, 802, DateTimeKind.Local).AddTicks(8056),
                             IsBlocked = false,
                             Money = 3000.75m,
                             UserId = 2
@@ -183,21 +183,21 @@ namespace CFI_Track3_Squad3_Backend.Migrations
                         new
                         {
                             Id = 1,
-                            Email = "adm@gmail.com",
-                            FirstName = "Pablo",
+                            Email = "admin@gmail.com",
+                            FirstName = "Admin",
                             IsDelete = false,
-                            LastName = "Ortiz",
-                            Password = "9f3d321cd0a1ccafa899226d5190f74618cb23b789aa998e1d7f741956132434",
+                            LastName = "Administrador",
+                            Password = "eeec7cf230a0eb1c9e6be4aede189d43fdb5f86a6225cebef897fbb871b29d61",
                             RoleId = 1
                         },
                         new
                         {
                             Id = 2,
-                            Email = "noadm@gmail.com",
-                            FirstName = "Kevin",
+                            Email = "user@gmail.com",
+                            FirstName = "User",
                             IsDelete = false,
-                            LastName = "Johnson",
-                            Password = "a10ad3a74bccd29b56cb5ec5a213d1a27b293b6bb88797418a31f09c2a707bf4",
+                            LastName = "UserTest",
+                            Password = "3260fa4b67859cffb492b7fe25752e910478832f0dcdf4e7891db1eb10f28f1f",
                             RoleId = 2
                         });
                 });

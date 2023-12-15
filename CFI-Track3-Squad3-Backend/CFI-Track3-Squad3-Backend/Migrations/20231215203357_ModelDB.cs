@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CFI_Track3_Squad3_Backend.Migrations
 {
-    public partial class TestDBV12 : Migration
+    public partial class ModelDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,7 +15,7 @@ namespace CFI_Track3_Squad3_Backend.Migrations
                 {
                     Account_Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    account_CreationDate = table.Column<string>(type: "VARCHAR(100)", nullable: true),
+                    account_CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     account_Money = table.Column<decimal>(type: "DECIMAL", nullable: false),
                     account_IsBlocked = table.Column<bool>(type: "bit", nullable: false),
                     account_UserId = table.Column<int>(type: "int", nullable: false)
@@ -71,10 +71,10 @@ namespace CFI_Track3_Squad3_Backend.Migrations
                 columns: new[] { "Account_Id", "account_CreationDate", "account_IsBlocked", "account_Money", "account_UserId" },
                 values: new object[,]
                 {
-                    { 1, "2023-12-14T19:22:44.2373951", false, 1000.00m, 1 },
-                    { 2, "2023-12-14T19:22:44.2373951", false, 2000.00m, 1 },
-                    { 3, "2023-12-14T19:22:44.2373951", true, 1500.50m, 2 },
-                    { 4, "2023-12-14T19:22:44.2373951", false, 3000.75m, 2 }
+                    { 1, new DateTime(2023, 12, 15, 17, 33, 56, 802, DateTimeKind.Local).AddTicks(8040), false, 1000.00m, 1 },
+                    { 2, new DateTime(2023, 12, 15, 17, 33, 56, 802, DateTimeKind.Local).AddTicks(8054), false, 2000.00m, 1 },
+                    { 3, new DateTime(2023, 12, 15, 17, 33, 56, 802, DateTimeKind.Local).AddTicks(8055), true, 1500.50m, 2 },
+                    { 4, new DateTime(2023, 12, 15, 17, 33, 56, 802, DateTimeKind.Local).AddTicks(8056), false, 3000.75m, 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -89,12 +89,12 @@ namespace CFI_Track3_Squad3_Backend.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "DeletedTimeUtc", "Email", "FirstName", "IsDelete", "LastName", "Password", "RolId" },
-                values: new object[] { 1, null, "adm@gmail.com", "Pablo", false, "Ortiz", "9f3d321cd0a1ccafa899226d5190f74618cb23b789aa998e1d7f741956132434", 1 });
+                values: new object[] { 1, null, "admin@gmail.com", "Admin", false, "Administrador", "eeec7cf230a0eb1c9e6be4aede189d43fdb5f86a6225cebef897fbb871b29d61", 1 });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "DeletedTimeUtc", "Email", "FirstName", "IsDelete", "LastName", "Password", "RolId" },
-                values: new object[] { 2, null, "noadm@gmail.com", "Kevin", false, "Johnson", "a10ad3a74bccd29b56cb5ec5a213d1a27b293b6bb88797418a31f09c2a707bf4", 2 });
+                values: new object[] { 2, null, "user@gmail.com", "User", false, "UserTest", "3260fa4b67859cffb492b7fe25752e910478832f0dcdf4e7891db1eb10f28f1f", 2 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_RolId",

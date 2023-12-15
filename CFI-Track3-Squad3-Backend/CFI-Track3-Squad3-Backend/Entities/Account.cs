@@ -11,8 +11,8 @@ namespace CFI_Track3_Squad3_Backend.Entities
         [Key]
         [Column("Account_Id")]
         public int Id { get; set; }
-        [Column("account_CreationDate", TypeName = "VARCHAR(100)")]
-        public string? DateTime { get; set; }
+        [Column("account_CreationDate")]
+        public DateTime DateTime { get; set; }
         [Column("account_Money", TypeName = "DECIMAL")]
         public decimal Money { get; set; }
         [Column("account_IsBlocked")]
