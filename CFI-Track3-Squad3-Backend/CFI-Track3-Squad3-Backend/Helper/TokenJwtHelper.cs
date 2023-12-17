@@ -1,4 +1,6 @@
-﻿using CFI_Track3_Squad3_Backend.Entities;
+﻿// Clase de utilidad para la generación de tokens JWT
+
+using CFI_Track3_Squad3_Backend.Entities;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -9,11 +11,17 @@ namespace CFI_Track3_Squad3_Backend.Helper
     public class TokenJwtHelper
     {
         private IConfiguration _configuration;
+
         public TokenJwtHelper(IConfiguration configuration)
         {
             _configuration = configuration;
         }
 
+        /// <summary>
+        /// Genera un token JWT para el usuario especificado.
+        /// </summary>
+        /// <param name="user">Usuario para el cual se genera el token.</param>
+        /// <returns>Token JWT generado.</returns>
         public string GenerateToken(User user)
         {
             var claims = new[]
@@ -32,7 +40,9 @@ namespace CFI_Track3_Squad3_Backend.Helper
                 expires: DateTime.Now.AddMinutes(600),
                 signingCredentials: credentials
                 );
+
             var response = new JwtSecurityTokenHandler().WriteToken(securityToken);
+
             return response;
         }
     }

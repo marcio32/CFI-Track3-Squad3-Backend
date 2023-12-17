@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CFI_Track3_Squad3_Backend.Migrations
 {
-    public partial class ModelDB : Migration
+    public partial class aaaa : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -71,10 +71,10 @@ namespace CFI_Track3_Squad3_Backend.Migrations
                 columns: new[] { "Account_Id", "account_CreationDate", "account_IsBlocked", "account_Money", "account_UserId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 12, 15, 17, 33, 56, 802, DateTimeKind.Local).AddTicks(8040), false, 1000.00m, 1 },
-                    { 2, new DateTime(2023, 12, 15, 17, 33, 56, 802, DateTimeKind.Local).AddTicks(8054), false, 2000.00m, 1 },
-                    { 3, new DateTime(2023, 12, 15, 17, 33, 56, 802, DateTimeKind.Local).AddTicks(8055), true, 1500.50m, 2 },
-                    { 4, new DateTime(2023, 12, 15, 17, 33, 56, 802, DateTimeKind.Local).AddTicks(8056), false, 3000.75m, 2 }
+                    { 1, new DateTime(2023, 12, 15, 18, 37, 6, 579, DateTimeKind.Local).AddTicks(4968), false, 1000.00m, 1 },
+                    { 2, new DateTime(2023, 12, 15, 18, 37, 6, 579, DateTimeKind.Local).AddTicks(4983), false, 2000.00m, 1 },
+                    { 3, new DateTime(2023, 12, 15, 18, 37, 6, 579, DateTimeKind.Local).AddTicks(4984), true, 1500.50m, 2 },
+                    { 4, new DateTime(2023, 12, 15, 18, 37, 6, 579, DateTimeKind.Local).AddTicks(4984), false, 3000.75m, 2 }
                 });
 
             migrationBuilder.InsertData(

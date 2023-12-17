@@ -7,37 +7,46 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CFI_Track3_Squad3_Backend.Controllers
 {
+    /// <summary>
+    /// Controlador para la autenticación y autorización de usuarios.
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    [AllowAnonymous]
+    [AllowAnonymous] // Permite el acceso a este controlador sin autenticación.
     public class AuthorizeController : ControllerBase
     {
         private TokenJwtHelper _tokenJwtHelper;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ILogger<UsersController> _logger;
 
-        public AuthorizeController(IUnitOfWork unitOfWork, IConfiguration configuration, ILogger<UsersController> logger) 
+        /// <summary>
+        /// Constructor que recibe instancias necesarias para la autenticación y autorización.
+        /// </summary>
+        public AuthorizeController(IUnitOfWork unitOfWork, IConfiguration configuration, ILogger<UsersController> logger)
         {
             _unitOfWork = unitOfWork;
             _tokenJwtHelper = new TokenJwtHelper(configuration);
             _logger = logger;
         }
 
+        /// <summary>
+        /// Endpoint para iniciar sesión y generar un token JWT.
+        /// </summary>
         [HttpPost]
-        public async Task<IActionResult> Login(AuthenticateDTO authenticateDTO) 
+        public async Task<IActionResult> Login(AuthenticateDTO authenticateDTO)
         {
             try
             {
                 var userCredentials = await _unitOfWork.UserRepository.AuthenticateCredentials(authenticateDTO);
-                if(userCredentials is null) 
+                if (userCredentials is null)
                 {
                     return ResponseFactory.CreateErrorResponse(401, "Las credenciales son incorrectas.");
                 }
-                if(userCredentials.IsDelete != false) 
+                if (userCredentials.IsDelete != false)
                 {
-                    return ResponseFactory.CreateErrorResponse(500, "Usurio Eliminado.");
+                    return ResponseFactory.CreateErrorResponse(500, "Usuario Eliminado.");
                 }
-                if(userCredentials.Role.IsDeleted != false) 
+                if (userCredentials.Role.IsDeleted != false)
                 {
                     return ResponseFactory.CreateErrorResponse(500, "Rol Eliminado.");
                 }
@@ -54,8 +63,8 @@ namespace CFI_Track3_Squad3_Backend.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "A ocurrido un error inesperado.");
-                return ResponseFactory.CreateErrorResponse(500, "A ocurrido un error inesperado.");
+                _logger.LogError(ex, "Ha ocurrido un error inesperado.");
+                return ResponseFactory.CreateErrorResponse(500, "Ha ocurrido un error inesperado.");
             }
         }
     }

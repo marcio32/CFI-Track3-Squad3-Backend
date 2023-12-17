@@ -4,10 +4,17 @@ using CFI_Track3_Squad3_Backend.DTOs;
 
 namespace CFI_Track3_Squad3_Backend.DataAccess.DatabaseSeeding
 {
-    public class AccountsSeeder : IEntitySeeder 
+    /// <summary>
+    /// Clase que implementa IEntitySeeder para sembrar datos iniciales de la entidad Account.
+    /// </summary>
+    public class AccountsSeeder : IEntitySeeder
     {
+        /// <summary>
+        /// Método para sembrar datos en la base de datos utilizando el modelo de construcción (ModelBuilder).
+        /// </summary>
         public void SeedDatabase(ModelBuilder modelBuilder)
         {
+            // Se insertan datos iniciales en la entidad Account.
             modelBuilder.Entity<Account>().HasData(
                 new Account
                 {
@@ -42,7 +49,5 @@ namespace CFI_Track3_Squad3_Backend.DataAccess.DatabaseSeeding
                     UserId = 2
                 });
         }
-    }    
+    }
 }
-    
-    

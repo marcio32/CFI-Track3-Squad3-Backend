@@ -55,7 +55,7 @@ namespace CFI_Track3_Squad3_Backend.Migrations
                         new
                         {
                             Id = 1,
-                            DateTime = new DateTime(2023, 12, 15, 17, 33, 56, 802, DateTimeKind.Local).AddTicks(8040),
+                            DateTime = new DateTime(2023, 12, 15, 18, 37, 6, 579, DateTimeKind.Local).AddTicks(4968),
                             IsBlocked = false,
                             Money = 1000.00m,
                             UserId = 1
@@ -63,7 +63,7 @@ namespace CFI_Track3_Squad3_Backend.Migrations
                         new
                         {
                             Id = 2,
-                            DateTime = new DateTime(2023, 12, 15, 17, 33, 56, 802, DateTimeKind.Local).AddTicks(8054),
+                            DateTime = new DateTime(2023, 12, 15, 18, 37, 6, 579, DateTimeKind.Local).AddTicks(4983),
                             IsBlocked = false,
                             Money = 2000.00m,
                             UserId = 1
@@ -71,7 +71,7 @@ namespace CFI_Track3_Squad3_Backend.Migrations
                         new
                         {
                             Id = 3,
-                            DateTime = new DateTime(2023, 12, 15, 17, 33, 56, 802, DateTimeKind.Local).AddTicks(8055),
+                            DateTime = new DateTime(2023, 12, 15, 18, 37, 6, 579, DateTimeKind.Local).AddTicks(4984),
                             IsBlocked = true,
                             Money = 1500.50m,
                             UserId = 2
@@ -79,7 +79,7 @@ namespace CFI_Track3_Squad3_Backend.Migrations
                         new
                         {
                             Id = 4,
-                            DateTime = new DateTime(2023, 12, 15, 17, 33, 56, 802, DateTimeKind.Local).AddTicks(8056),
+                            DateTime = new DateTime(2023, 12, 15, 18, 37, 6, 579, DateTimeKind.Local).AddTicks(4984),
                             IsBlocked = false,
                             Money = 3000.75m,
                             UserId = 2
