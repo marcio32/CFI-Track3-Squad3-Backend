@@ -7,7 +7,7 @@ namespace CFI_Track3_Squad3_Backend.DTOs
     /// Clase que representa un objeto de transferencia de datos (DTO) para la entidad Account.
     /// Contiene propiedades que reflejan los campos relevantes de la entidad Account.
     /// </summary>
-    public class AccountsDTO
+    public class AccountDTO
     {
         /// <summary>
         /// Obtiene o establece el identificador de la cuenta.
@@ -17,7 +17,7 @@ namespace CFI_Track3_Squad3_Backend.DTOs
         /// <summary>
         /// Obtiene o establece la fecha y hora asociada a la cuenta.
         /// </summary>
-        public DateTime DataTime { get; set; }
+        public DateTime DateTime { get; set; }
 
         /// <summary>
         /// Obtiene o establece la cantidad de dinero en la cuenta.
@@ -27,7 +27,7 @@ namespace CFI_Track3_Squad3_Backend.DTOs
         /// <summary>
         /// Obtiene o establece un valor que indica si la cuenta está bloqueada.
         /// </summary>
-        public bool IsBlocked { get; set; }
+        public bool IsBloqued { get; set; }
 
         /// <summary>
         /// Obtiene o establece el identificador del usuario asociado a la cuenta.

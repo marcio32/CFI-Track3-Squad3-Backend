@@ -10,6 +10,7 @@ namespace CFI_Track3_Squad3_Backend.DataAccess.Repositories.Interfaces
         public Task<bool> DeleteUserById(int id, int parameter);
         public Task<bool> UpdateUser(UserRegisterDTO userRegisterDTO, int id, int parameter);
         public Task<bool> InsertUser(UserRegisterDTO userRegisterDTO);
+        public Task<User?> AuthenticateCredentials(AuthenticateDTO dto);
         
     }
 }

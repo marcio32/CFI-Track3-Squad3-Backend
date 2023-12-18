@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CFI_Track3_Squad3_Backend.Migrations
 {
     [DbContext(typeof(ContextDB))]
-    [Migration("20231215213706_aaaa")]
-    partial class aaaa
+    [Migration("20231217221358_version1")]
+    partial class version1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -57,7 +57,7 @@ namespace CFI_Track3_Squad3_Backend.Migrations
                         new
                         {
                             Id = 1,
-                            DateTime = new DateTime(2023, 12, 15, 18, 37, 6, 579, DateTimeKind.Local).AddTicks(4968),
+                            DateTime = new DateTime(2023, 12, 17, 19, 13, 58, 150, DateTimeKind.Local).AddTicks(5642),
                             IsBlocked = false,
                             Money = 1000.00m,
                             UserId = 1
@@ -65,7 +65,7 @@ namespace CFI_Track3_Squad3_Backend.Migrations
                         new
                         {
                             Id = 2,
-                            DateTime = new DateTime(2023, 12, 15, 18, 37, 6, 579, DateTimeKind.Local).AddTicks(4983),
+                            DateTime = new DateTime(2023, 12, 17, 19, 13, 58, 150, DateTimeKind.Local).AddTicks(5672),
                             IsBlocked = false,
                             Money = 2000.00m,
                             UserId = 1
@@ -73,7 +73,7 @@ namespace CFI_Track3_Squad3_Backend.Migrations
                         new
                         {
                             Id = 3,
-                            DateTime = new DateTime(2023, 12, 15, 18, 37, 6, 579, DateTimeKind.Local).AddTicks(4984),
+                            DateTime = new DateTime(2023, 12, 17, 19, 13, 58, 150, DateTimeKind.Local).AddTicks(5675),
                             IsBlocked = true,
                             Money = 1500.50m,
                             UserId = 2
@@ -81,7 +81,7 @@ namespace CFI_Track3_Squad3_Backend.Migrations
                         new
                         {
                             Id = 4,
-                            DateTime = new DateTime(2023, 12, 15, 18, 37, 6, 579, DateTimeKind.Local).AddTicks(4984),
+                            DateTime = new DateTime(2023, 12, 17, 19, 13, 58, 150, DateTimeKind.Local).AddTicks(5678),
                             IsBlocked = false,
                             Money = 3000.75m,
                             UserId = 2

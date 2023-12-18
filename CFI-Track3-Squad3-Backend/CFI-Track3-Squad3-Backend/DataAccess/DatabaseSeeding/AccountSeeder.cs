@@ -21,7 +21,7 @@ namespace CFI_Track3_Squad3_Backend.DataAccess.DatabaseSeeding
                     Id = 1,
                     DateTime = DateTime.Now,
                     Money = 1000.00m,
-                    IsBlocked = false,
+                    IsBloqued = false,
                     UserId = 1
                 },
                 new Account
@@ -29,7 +29,7 @@ namespace CFI_Track3_Squad3_Backend.DataAccess.DatabaseSeeding
                     Id = 2,
                     DateTime = DateTime.Now,
                     Money = 2000.00m,
-                    IsBlocked = false,
+                    IsBloqued = false,
                     UserId = 1
                 },
                 new Account
@@ -37,7 +37,7 @@ namespace CFI_Track3_Squad3_Backend.DataAccess.DatabaseSeeding
                     Id = 3,
                     DateTime = DateTime.Now,
                     Money = 1500.50m,
-                    IsBlocked = true,
+                    IsBloqued = true,
                     UserId = 2
                 },
                 new Account
@@ -45,7 +45,7 @@ namespace CFI_Track3_Squad3_Backend.DataAccess.DatabaseSeeding
                     Id = 4,
                     DateTime = DateTime.Now,
                     Money = 3000.75m,
-                    IsBlocked = false,
+                    IsBloqued = false,
                     UserId = 2
                 });
         }

@@ -23,7 +23,7 @@ namespace CFI_Track3_Squad3_Backend.Services
             _contextDB = contextDB;
 
             // Inicialización de los repositorios
-            AccountsRepository = new AccountsRepository(_contextDB);
+            AccountsRepository = new AccountsRepository(_contextDB, _mapper);
             RoleRepository = new RoleRepository(_contextDB, _mapper);
             UserRepository = new UserRepository(_contextDB, _mapper);
         }
