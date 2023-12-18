@@ -19,7 +19,7 @@
         /// <summary>
         /// Obtiene o establece el número de identificación del usuario.
         /// </summary>
-        public int Dni { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// Obtiene o establece la dirección de correo electrónico del usuario.
