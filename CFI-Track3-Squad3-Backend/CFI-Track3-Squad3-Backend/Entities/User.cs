@@ -1,4 +1,5 @@
 ﻿using CFI_Track3_Squad3_Backend.DTOs;
+using CFI_Track3_Squad3_Backend.Helper;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -33,5 +34,17 @@ namespace CFI_Track3_Squad3_Backend.Entities
         [Column("RolId")]
         public int RoleId { get; set; }
         public Role? Role { get; set; }
+
+
+        public static implicit operator User(UserRegisterDTO userRegisterDTO)
+        {
+            var user = new User();
+            user.Id = userRegisterDTO.Id;
+            user.FirstName = userRegisterDTO.FirstName;
+            user.LastName = userRegisterDTO.LastName;
+            user.Password = PasswordEncryptHelper.EncryptPassword(userRegisterDTO.Password, userRegisterDTO.Email);
+            user.Email = userRegisterDTO.Email;
+            return user;
+        }
     }
 }

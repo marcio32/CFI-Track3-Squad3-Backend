@@ -24,11 +24,11 @@ namespace CFI_Track3_Squad3_Backend.Entities
         public static implicit operator Account(AccountsDTO accountsDTO)
         {
             var accounts = new Account();
-            accountsDTO.UserId = accountsDTO.UserId;
-            accountsDTO.DataTime = accountsDTO.DataTime;
-            accountsDTO.Id = accountsDTO.Id;
-            accountsDTO.Money = accountsDTO.Money;
-            accountsDTO.IsBlocked = accountsDTO.IsBlocked;
+            accounts.UserId = accountsDTO.UserId;
+            accounts.DateTime = accountsDTO.DataTime;
+            accounts.Id = accountsDTO.Id;
+            accounts.Money = accountsDTO.Money;
+            accounts.IsBlocked = accountsDTO.IsBlocked;
             return accounts;
         }
     }
