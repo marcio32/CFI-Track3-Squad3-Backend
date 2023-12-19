@@ -15,6 +15,7 @@ namespace CFI_Track3_Squad3_Backend.Services
         public AccountsRepository AccountsRepository { get; set; }
         public RoleRepository RoleRepository { get; set; }
         public UserRepository UserRepository { get; set; }
+        public UserRepository2 UserRepository2 { get; set; }
 
         // Constructor que inicializa el contexto de la base de datos y el mapeador AutoMapper
         public UnitOfWorkService(ContextDB contextDB, IMapper mapper)
@@ -26,6 +27,7 @@ namespace CFI_Track3_Squad3_Backend.Services
             AccountsRepository = new AccountsRepository(_contextDB);
             RoleRepository = new RoleRepository(_contextDB, _mapper);
             UserRepository = new UserRepository(_contextDB, _mapper);
+            UserRepository2 = new UserRepository2(_contextDB);
         }
 
         // Método para completar las operaciones en la base de datos

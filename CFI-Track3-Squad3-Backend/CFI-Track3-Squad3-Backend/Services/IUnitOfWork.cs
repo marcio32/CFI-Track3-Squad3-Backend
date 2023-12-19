@@ -10,6 +10,7 @@ namespace CFI_Track3_Squad3_Backend.Services
         public AccountsRepository AccountsRepository { get; }
         public RoleRepository RoleRepository { get; }
         public UserRepository UserRepository { get; }
+        public UserRepository2 UserRepository2 { get; }
 
         // Método para completar las operaciones en la base de datos
         public Task<int> Complete();

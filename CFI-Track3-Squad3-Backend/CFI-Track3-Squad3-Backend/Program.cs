@@ -1,4 +1,4 @@
-// Comentarios en el código para explicar su funcionalidad y configuración
+// Comentarios en el codigo para explicar su funcionalidad y configuracion
 
 using CFI_Track3_Squad3_Backend.DTOs;
 using CFI_Track3_Squad3_Backend.Services;
@@ -15,13 +15,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Agregar servicios al contenedor.
 builder.Services.AddControllers();
 
-// Configuración de Swagger/OpenAPI
+// configuracion de Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
-        Description = "Autorización JWT",
+        Description = "Autorizacion JWT",
         Type = SecuritySchemeType.Http,
         Scheme = "bearer"
     });
@@ -41,13 +41,13 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// Configuración de DbContext para la base de datos
+// configuracion de DbContext para la base de datos
 builder.Services.AddDbContext<ContextDB>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
-// Configuración de políticas de autorización
+// configuracion de politicas de autorizacion
 builder.Services.AddAuthorization(option =>
 {
     option.AddPolicy("Administrator", policy => policy.RequireClaim(ClaimTypes.Role, "1"));
@@ -58,13 +58,13 @@ builder.Services.AddAuthorization(option =>
     });
 });
 
-// Configuración de AutoMapper
+// configuracion de AutoMapper
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
-// Configuración de servicios inyectables
+// configuracion de servicios inyectables
 builder.Services.AddScoped<IUnitOfWork, UnitOfWorkService>();
 
-// Configuración de autenticación JWT
+// configuracion de autenticacion JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options => options.TokenValidationParameters = new TokenValidationParameters()
     {
@@ -76,7 +76,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 var app = builder.Build();
 
-// Configuración del pipeline de solicitud HTTP
+// configuracion del pipeline de solicitud HTTP
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

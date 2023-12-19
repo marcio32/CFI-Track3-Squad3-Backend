@@ -1,6 +1,7 @@
 ﻿using CFI_Track3_Squad3_Backend.DTOs;
 using CFI_Track3_Squad3_Backend.Infrectuture; // Parece haber un error tipográfico en 'Infrectuture'.
 using CFI_Track3_Squad3_Backend.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,13 +15,15 @@ namespace CFI_Track3_Squad3_Backend.Controllers
     public class AccountsController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ILogger<UserController2> _logger;
 
         /// <summary>
         /// Constructor que recibe una instancia de IUnitOfWork para la inyección de dependencias.
         /// </summary>
-        public AccountsController(IUnitOfWork unitOfWork)
+        public AccountsController(IUnitOfWork unitOfWork, ILogger<UserController2> logger)
         {
             _unitOfWork = unitOfWork;
+            _logger = logger;
         }
 
         /// <summary>
@@ -28,6 +31,7 @@ namespace CFI_Track3_Squad3_Backend.Controllers
         /// </summary>
         [Route("GetAllAccounts")]
         [HttpGet]
+        [Authorize(Policy = "AdministratorAndConsultant")]
         public async Task<IActionResult> GetAll()
         {
             return ResponseFactory.CreateSuccessResponse(200, await _unitOfWork.AccountsRepository.GetAllAccount());
@@ -38,6 +42,7 @@ namespace CFI_Track3_Squad3_Backend.Controllers
         /// </summary>
         [HttpGet]
         [Route("GetAccountId/{id}")]
+        [Authorize(Policy = "AdministratorAndConsultant")]
         public async Task<IActionResult> GetById(int id)
         {
             var result = await _unitOfWork.AccountsRepository.GetAccountId(id);
@@ -54,6 +59,7 @@ namespace CFI_Track3_Squad3_Backend.Controllers
         /// </summary>
         [HttpPost]
         [Route("InsertAccount")]
+        [Authorize(Policy = "Administrator")]
         public async Task<IActionResult> Insert(int id, AccountsDTO accountsDTO)
         {
             var result = await _unitOfWork.AccountsRepository.InsertAccount(accountsDTO);
@@ -69,7 +75,8 @@ namespace CFI_Track3_Squad3_Backend.Controllers
         /// Endpoint para actualizar un registro de cuenta existente.
         /// </summary>
         [HttpPut]
-        [Route("UpdataAccount")] // Parece haber un error tipográfico en 'UpdataAccount'.
+        [Route("UpdataAccount")] 
+        [Authorize(Policy = "Administrator")]
         public async Task<IActionResult> Updata(int id, AccountsDTO accountsDTO)
         {
             var result = await _unitOfWork.AccountsRepository.UpdataAccount(accountsDTO, id);
@@ -86,6 +93,7 @@ namespace CFI_Track3_Squad3_Backend.Controllers
         /// </summary>
         [HttpDelete]
         [Route("DeleteAccount")]
+        [Authorize(Policy = "Administrator")]
         public async Task<IActionResult> Delete(int id)
         {
             var result = await _unitOfWork.AccountsRepository.DeleteAccount(id);
