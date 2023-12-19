@@ -33,5 +33,10 @@ namespace CFI_Track3_Squad3_Backend.Entities
         [Column("RolId")]
         public int RoleId { get; set; }
         public Role? Role { get; set; }
+
+        public static implicit operator User(UserRegisterDTO v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
